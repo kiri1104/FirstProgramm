@@ -87,7 +87,7 @@ public class MyPanel extends JPanel {
                     segment(5);
                     segment(7);
                     break;
-                case "Д":
+                case "д":
                     segment(1);
                     segment(7);
                     segment(6);
@@ -99,7 +99,7 @@ public class MyPanel extends JPanel {
                     segment(10);
                     segment(11);
                     break;
-                case "О":
+                case "о":
                     segment(1);
                     segment(2);
                     segment(4);
@@ -107,7 +107,7 @@ public class MyPanel extends JPanel {
                     segment(6);
                     segment(7);
                     break;
-                case "М":
+                case "м":
                     segment(2);
                     segment(4);
                     segment(6);
