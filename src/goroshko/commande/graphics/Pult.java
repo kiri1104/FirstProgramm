@@ -52,7 +52,8 @@ public class Pult extends JFrame {
         contr.insets = new Insets(10, 0, 10, 10);
         contr.gridwidth = 4;
         contr.gridheight = 4;//GridBagConstraints.REMAINDER;//
-        frame.add(pane, contr);
+        final JScrollPane scrollPane = new JScrollPane(pane);
+        frame.add(scrollPane, contr);
     }
 
     private void makePortContainer(JFrame frame) {
@@ -85,10 +86,10 @@ public class Pult extends JFrame {
     private void makePultContainer(JFrame frame) {
         JPanel container = new JPanel();
         container.setPreferredSize(new Dimension(250, 400));
-        JLabel[] labels = new JLabel[buttonsCount];
+        JLabel[] labels = new JLabel[buttonsCount-1];
         JPanel textControlsPane = new JPanel();
         textControlsPane.setBorder(BorderFactory.createTitledBorder("Упрощенный пульт управления"));
-        for (int i = 0; i < buttonsCount; i++) {
+        for (int i = 0; i < buttonsCount-1; i++) {
             if (i < textFieldStrings.length) {
                 labels[i] = new JLabel(textFieldStrings[i]);
             } else {
@@ -169,8 +170,8 @@ public class Pult extends JFrame {
     }
 
     public void setTextOut(String textOut) {
-        this.textOut = textOut;
-        String intext = pane.getText();
-        pane.setText(intext +"\n" + textOut);
+        this.textOut=textOut;
+        String intext= pane.getText();
+        pane.setText((intext+"\n"+textOut));
     }
 }

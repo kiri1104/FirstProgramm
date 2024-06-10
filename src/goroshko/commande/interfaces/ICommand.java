@@ -1,4 +1,4 @@
-package goroshko.commande.sandbox;
+package goroshko.commande.interfaces;
 
 public interface ICommand {
     public void execute();
