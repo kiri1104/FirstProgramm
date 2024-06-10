@@ -1,6 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
 import java.util. ArrayList;
+import java.util.Arrays;
 
 public class MyPanel extends JPanel {
     public MyPanel() {
@@ -12,7 +13,7 @@ public class MyPanel extends JPanel {
     private int width = 50;
     private int height = 100;
     private int step = 30;
-    private int delta = 5;
+    private int delta = 3;
     private ArrayList<Rectangle> outlist = new ArrayList<Rectangle>();
     public void setSymbols(String parm) {
         String[] arr = parm.replace(",", "").split("");
@@ -115,6 +116,8 @@ public class MyPanel extends JPanel {
                     segment(12);
                     segment(13);
                     break;
+
+
             }
             x = x + step + width;
         }
@@ -135,19 +138,9 @@ public class MyPanel extends JPanel {
                 break;
             case 7:outlist.add(new Rectangle(x, y+delta, x, y+(height/2)-delta));
                 break;
-            case 8:outlist.add(new Rectangle(x+width, y+height, x+width+delta*2,y+height));
+            case 8:outlist.add(new Rectangle(x+width/2+delta/2, y+height/2-delta, x+width-delta, y+delta));
                 break;
-            case 9:outlist.add(new Rectangle(x+width+delta*2, y+height, x+width+delta*2,y+height+delta*2));
-                break;
-            case 10:outlist.add(new Rectangle(x, y+height, x-delta*2,y+height));
-                break;
-            case 11:outlist.add(new Rectangle(x-delta*2, y+height, x-delta*2,y+height+delta*2));
-                break;
-            case 12:outlist.add(new Rectangle(x+width/2-delta, y+height/2-delta, x+delta, y+delta));
-                break;
-            case 13:outlist.add(new Rectangle(x+width/2+delta/2, y+height/2-delta, x+width-delta, y+delta));
-                break;
-            case 14:outlist.add(new Rectangle(x+delta, y+height-delta, x+width/2-delta/2, y+height/2+delta));
+            case 9:outlist.add(new Rectangle(x+delta, y+height-delta, x+width/2-delta/2, y+height/2+delta));
                 break;
         }
     }
@@ -157,5 +150,21 @@ public class MyPanel extends JPanel {
         for (Rectangle rect:outlist) {
             g.drawLine(rect.x, rect.y, rect.width, rect.height);
         }
+    }
+
+    public void setX(int x){
+        this.x = x;
+    }
+    public void setY(int y){
+        this.y = y;
+    }
+    public void setWidth(int width){
+        this.width = width;
+    }
+    public void setHeight(int height){
+        this.height = height;
+    }
+    public void setStep(int step){
+        this.step = step;
     }
 }
