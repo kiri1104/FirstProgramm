@@ -7,7 +7,11 @@ public class MyPanel extends JPanel {
     public MyPanel() {
         setBorder(BorderFactory.createLineBorder(Color.black));
     }
-    public Dimension getPreferredSize() { return new Dimension(1560, 700); }
+
+    public Dimension getPreferredSize() {
+        return new Dimension(1560, 700);
+    }
+
     private int x = 100;
     private int y = 100;
     private int width = 50;
@@ -15,8 +19,9 @@ public class MyPanel extends JPanel {
     private int step = 30;
     private int delta = 3;
     private ArrayList<Rectangle> outlist = new ArrayList<Rectangle>();
+
     public void setSymbols(String parm) {
-        String[] arr = parm.replace(",", "").split("");
+        String[] arr = parm.toLowerCase().replace(",", "").split("");
         for (String cifra : arr) {
             switch (cifra) {
                 case "0":
@@ -116,55 +121,73 @@ public class MyPanel extends JPanel {
                     segment(12);
                     segment(13);
                     break;
-
-
             }
             x = x + step + width;
         }
     }
-    private void segment(int number){
-        switch(number){
-            case 1:outlist.add(new Rectangle(x+delta,y, x+width-delta,y));
+
+    private void segment(int number) {
+        switch (number) {
+            case 1:
+                outlist.add(new Rectangle(x + delta, y, x + width - delta, y));
                 break;
-            case 2:outlist.add(new Rectangle(x+width, y+delta, x+width, y+(height/2)-delta));
+            case 2:
+                outlist.add(new Rectangle(x + width, y + delta, x + width, y + (height / 2) - delta));
                 break;
-            case 3:outlist.add(new Rectangle(x+delta, y+height/2, x+width-delta, y+height/2));
+            case 3:
+                outlist.add(new Rectangle(x + delta, y + height / 2, x + width - delta, y + height / 2));
                 break;
-            case 4:outlist.add(new Rectangle(x+width, y+(height/2)+delta, x+width, y+height-delta));
+            case 4:
+                outlist.add(new Rectangle(x + width, y + (height / 2) + delta, x + width, y + height - delta));
                 break;
-            case 5:outlist.add(new Rectangle(x+delta, y+height, x+width-delta, y+height));
+            case 5:
+                outlist.add(new Rectangle(x + delta, y + height, x + width - delta, y + height));
                 break;
-            case 6:outlist.add(new Rectangle(x, y+(height/2)+delta, x, y+height-delta));
+            case 6:
+                outlist.add(new Rectangle(x, y + (height / 2) + delta, x, y + height - delta));
                 break;
-            case 7:outlist.add(new Rectangle(x, y+delta, x, y+(height/2)-delta));
+            case 7:
+                outlist.add(new Rectangle(x, y + delta, x, y + (height / 2) - delta));
                 break;
-            case 8:outlist.add(new Rectangle(x+width/2+delta/2, y+height/2-delta, x+width-delta, y+delta));
+            case 8:
+                outlist.add(new Rectangle(x + width / 2 + delta / 2, y + height / 2 - delta, x + width - delta, y + delta));
                 break;
-            case 9:outlist.add(new Rectangle(x+delta, y+height-delta, x+width/2-delta/2, y+height/2+delta));
+            case 9:
+                outlist.add(new Rectangle(x + delta, y + height - delta, x + width / 2 - delta / 2, y + height / 2 + delta));
                 break;
         }
     }
+
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
 
-        for (Rectangle rect:outlist) {
+        for (Rectangle rect : outlist) {
             g.drawLine(rect.x, rect.y, rect.width, rect.height);
         }
     }
 
-    public void setX(int x){
+    public void setX(int x) {
         this.x = x;
     }
-    public void setY(int y){
+
+    public void setY(int y) {
         this.y = y;
     }
-    public void setWidth(int width){
+
+    public void setWidth(int width) {
         this.width = width;
     }
-    public void setHeight(int height){
+
+    public void setHeight(int height) {
         this.height = height;
     }
-    public void setStep(int step){
+
+    public void setStep(int step) {
         this.step = step;
+    }
+
+    public void clear() {
+        outlist.clear();
+        repaint();
     }
 }
